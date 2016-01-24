@@ -9,6 +9,12 @@ class ChurchNumeralsTest(unittest.TestCase):
         five = lambda f: lambda x: f(f(f(f(f(x)))))
         self.assertEqual(cn.church_to_int(five), 5)
 
+    def test_int_to_church(self):
+        self.assertEqual(cn.int_to_church(0), cn.zero)
+
+        three = cn.int_to_church(3)
+        self.assertEqual(cn.church_to_int(three), 3)
+
     def test_zero(self):
         self.assertEqual(cn.church_to_int(cn.zero), 0)
 

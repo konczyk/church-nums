@@ -20,6 +20,13 @@ def church_to_int(n):
     """Return the church numeral n as a Python integer"""
     return n(lambda x: x + 1)(0)
 
+def int_to_church(i):
+    """Return the church numeral for integer i"""
+    if i == 0:
+        return zero
+    else:
+        return successor(int_to_church(i - 1))
+
 def add(m, n):
     """Return the church numeral for m + n, for church numerals m and n."""
     return lambda f: lambda x: m(f)(n(f)(x))
@@ -30,4 +37,4 @@ def mul(m, n):
 
 def pow(m, n):
     """Return the church numeral for m ** n, for church numerals m and n."""
-    return lambda f: lambda x: (n(m))(f)(x)
+    return lambda f: lambda x: n(m)(f)(x)
