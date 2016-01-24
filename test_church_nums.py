@@ -22,5 +22,30 @@ class ChurchNumeralsTest(unittest.TestCase):
         three = cn.successor(cn.successor(cn.one))
         self.assertEqual(cn.church_to_int(three), 3)
 
+    def test_add(self):
+        zero = cn.add(cn.zero, cn.zero)
+        self.assertEqual(cn.church_to_int(zero), 0)
+
+        three = cn.add(cn.one, cn.successor(cn.one))
+        self.assertEqual(cn.church_to_int(three), 3)
+
+    def test_mul(self):
+        zero = cn.mul(cn.zero, cn.one)
+        self.assertEqual(cn.church_to_int(zero), 0)
+
+        two = cn.successor(cn.one)
+        three = cn.successor(two)
+        six = cn.mul(two, three)
+        self.assertEqual(cn.church_to_int(six), 6)
+
+    def test_pow(self):
+        one = cn.pow(cn.one, cn.zero)
+        self.assertEqual(cn.church_to_int(one), 1)
+
+        two = cn.successor(cn.one)
+        three = cn.successor(two)
+        eight = cn.pow(two, three)
+        self.assertEqual(cn.church_to_int(eight), 8)
+
 if __name__ == '__main__':
     unittest.main()
