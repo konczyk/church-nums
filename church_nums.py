@@ -33,8 +33,8 @@ def add(m, n):
 
 def mul(m, n):
     """Return the church numeral for m * n, for church numerals m and n."""
-    return lambda f: lambda x: m(n(f))(x)
+    return lambda f: m(n(f))
 
 def pow(m, n):
     """Return the church numeral for m ** n, for church numerals m and n."""
-    return lambda f: lambda x: n(m)(f)(x)
+    return n(m)
